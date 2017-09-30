@@ -94,8 +94,11 @@
     <Compile Include="Extensions\HttpWebRequestExtensions.cs" />
     <Compile Include="Extent.cs" />
     <Compile Include="Predefined\KnownTileSources.cs" />
+    <Compile Include="Predefined\TDTSchema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\BasicRequestTDT.cs" />
     <Compile Include="Web\HttpTileSource.cs" />
+    <Compile Include="Web\HttpTileSourceTDT.cs" />
     <Compile Include="Wmts\CrsAxisOrderRegistry.cs" />
     <Compile Include="Wmts\CrsIdentifier.cs" />
     <Compile Include="ITileProvider.cs" />

@@ -30,7 +30,8 @@ namespace BruTile.Predefined
         EsriWorldReferenceOverlay,
         EsriWorldTransportation,
         EsriWorldBoundariesAndPlaces,
-        EsriWorldDarkGrayBase
+        EsriWorldDarkGrayBase,
+        tianditu
     }
 
     public static class KnownTileSources
@@ -156,6 +157,14 @@ namespace BruTile.Predefined
                     return new HttpTileSource(new GlobalSphericalMercator(0, 16),
                         "http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                         name: source.ToString(), persistentCache: persistentCache, tileFetcher: tileFetcher);
+                //case KnownTileSource.tianditu:
+                //    return new HttpTileSource(new GlobalSphericalMercator(0),
+                //       "http://t1.tianditu.cn/DataServer?T=img_c&X={x}&Y={y}&L={z}",
+                //       name: source.ToString(), persistentCache: persistentCache, tileFetcher: tileFetcher);
+                case KnownTileSource.tianditu:
+                    return new HttpTileSource(new GlobalSphericalMercator(),
+                       "http://t0.tianditu.com/img_c/wmts?service=WMTS&request=GetTile&version=1.0.0&Layer=img&Style=default&Format=tiles&TileMatrixSet=c&TileMatrix={z}&TileRow={y}&TileCol={x}",
+                       name: source.ToString(), persistentCache: persistentCache, tileFetcher: tileFetcher);
                 default:
                     throw new NotSupportedException("KnownTileSource not known");
             }

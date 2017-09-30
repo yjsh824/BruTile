@@ -49,6 +49,7 @@
     <Compile Include="FetchStrategy.cs" />
     <Compile Include="Geometries\Point.cs" />
     <Compile Include="HashSet.cs" />
+    <Compile Include="TDTTrans.cs" />
     <Compile Include="LantMaterietTopowebbTileSourceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderSelect.cs" />
@@ -56,6 +57,19 @@
     <Compile Include="TileSourceForWmsSample.cs" />
     <Compile Include="Viewport.cs" />
     <Compile Include="ZoomHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\wmtsc2.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\BruTile可用2\BruTile\Tests\BruTile.Tests\bin\Debug\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RichardSzalay.MockHttp">
+      <HintPath>..\..\..\..\BruTile可用2\BruTile\Tests\BruTile.Tests\bin\Debug\RichardSzalay.MockHttp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

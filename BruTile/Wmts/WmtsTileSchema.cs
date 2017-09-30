@@ -70,8 +70,8 @@ namespace BruTile.Wmts
             if (@abstract == null) @abstract = string.Empty;
             if (string.IsNullOrEmpty(style)) style = "null";
 
-            if (!format.StartsWith("image/"))
-                throw new ArgumentException("Not an image mime type");
+            //if (!format.StartsWith("image/"))
+            //    throw new ArgumentException("Not an image mime type");
 
             var res = new WmtsTileSchema
             {

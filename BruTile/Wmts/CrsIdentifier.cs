@@ -25,7 +25,7 @@ namespace BruTile.Wmts
                     crs = new CrsIdentifier(parts[4], parts[5], parts[6]);
                     break;
                 default:
-                    crs = new CrsIdentifier();
+                    crs = new CrsIdentifier("EPSG","","4490");
                     break;
             }
 

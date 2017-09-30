@@ -1,24 +1,25 @@
-﻿// Copyright (c) BruTile developers team. All rights reserved. See License.txt in the project root for license information.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using BruTile.Cache;
 
 namespace BruTile.Web
 {
-    public class HttpTileSource : ITileSource, IRequest
+    public class HttpTileSourceTDT : ITileSource, IRequest
     {
         private readonly HttpTileProvider _provider;
 
-        public HttpTileSource(ITileSchema tileSchema, string urlFormatter, IEnumerable<string> serverNodes = null,
+        public HttpTileSourceTDT(ITileSchema tileSchema, string urlFormatter, IEnumerable<string> serverNodes = null,
             string apiKey = null, string name = null, IPersistentCache<byte[]> persistentCache = null,
             Func<Uri, byte[]> tileFetcher = null, Attribution attribution = null)
-            : this(tileSchema, new BasicRequest(urlFormatter, serverNodes, apiKey), name, persistentCache, tileFetcher, attribution)
+            : this(tileSchema, new BasicRequestTDT(urlFormatter, serverNodes, apiKey), name, persistentCache, tileFetcher, attribution)
         {
-            
+
         }
 
-        public HttpTileSource(ITileSchema tileSchema, IRequest request, string name = null,
+        public HttpTileSourceTDT(ITileSchema tileSchema, IRequest request, string name = null,
             IPersistentCache<byte[]> persistentCache = null, Func<Uri, byte[]> tileFetcher = null, Attribution attibution = null)
         {
             _provider = new HttpTileProvider(request, persistentCache, tileFetcher);

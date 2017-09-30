@@ -8,7 +8,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="Layers" Grid.Column="0" Background="White"></StackPanel>
-        <demo:MapControl x:Name="MapControl" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="DimGray"></demo:MapControl>
+        <demo:MapControl x:Name="MapControl" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="DimGray" MouseMove="MapControl_MouseMove">
+            <Label x:Name="label1" Content="Label1" HorizontalAlignment="Left" Margin="447,39,0,0" VerticalAlignment="Top"/>
+        </demo:MapControl>
         <Ellipse Grid.Column="1" Fill="Red" IsHitTestVisible="False" Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

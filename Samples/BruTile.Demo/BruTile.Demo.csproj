@@ -36,6 +36,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BruTile, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BruTile\bin\Debug\BruTile.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -44,6 +48,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0.3</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -96,14 +101,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BruTile\BruTile.csproj">
-      <Project>{9fb60e2d-c682-4a01-9584-8b495b8da85a}</Project>
-      <Name>BruTile</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BruTile.Samples.Common\BruTile.Samples.Common.csproj">
       <Project>{24a0d64a-f894-4eb4-8cb7-8f6081bfe324}</Project>
       <Name>BruTile.Samples.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\wmtsc2.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

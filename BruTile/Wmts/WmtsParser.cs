@@ -49,7 +49,7 @@ namespace BruTile.Wmts
         /// <param name="bbaoi">The way how axis order should be interpreted for &lt;ows:BoundingBox&gt;es</param>
         /// <returns>An enumeration of tile sources</returns>
         public static IEnumerable<ITileSource> Parse(Stream source, 
-            BoundingBoxAxisOrderInterpretation bbaoi = BoundingBoxAxisOrderInterpretation.Natural)
+            BoundingBoxAxisOrderInterpretation bbaoi = BoundingBoxAxisOrderInterpretation.Geographic)
         {
             var ser = new XmlSerializer(typeof(Capabilities));
             Capabilities capabilties;
@@ -78,14 +78,17 @@ namespace BruTile.Wmts
                 var identifier = layer.Identifier.Value;
                 var title = layer.Title[0].Value;
                 string @abstract = layer.Abstract != null ? layer.Abstract[0].Value : string.Empty;
-
+                //if (layer.TileMatrixSetLink.Count() == 0)
+                //{
+                //    layer.TileMatrixSetLink
+                //}
                 foreach (var tileMatrixLink in layer.TileMatrixSetLink)
                 {
                     foreach (var style in layer.Style)
                     {
                         foreach (var format in layer.Format)
                         {
-                            if (!format.StartsWith("image/")) continue;
+                            //if (!format.StartsWith("image/")) continue;
 
                             IRequest wmtsRequest;
 
@@ -239,7 +242,7 @@ namespace BruTile.Wmts
                 // Get the ordinate order for the crs (x, y) or (y, x) aka (lat, long)
                 var ordinateOrder = crsAxisOrder[crs];
                 // Get the unit of measure for the crs
-                var unitOfMeasure = crsUnitOfMeasure[crs];
+                //var unitOfMeasure = crsUnitOfMeasure[crs];
 
                 // Create a new WMTS tile schema 
                 var tileSchema = new WmtsTileSchema();
@@ -247,11 +250,12 @@ namespace BruTile.Wmts
                 // Add the resolutions
                 foreach (var tileMatrix in tileMatrixSet.TileMatrix)
                 {
-                    tileSchema.Resolutions.Add(ToResolution(tileMatrix, ordinateOrder, unitOfMeasure.ToMeter, ss));
+                    tileSchema.Resolutions.Add(ToResolution(tileMatrix, ordinateOrder, 117673.70816917332, ss));
                 }
 
                 tileSchema.Extent = ToExtent(tileMatrixSet, tileSchema, GetOrdinateOrder(bbaoi, ordinateOrder));
-
+                //tileSchema.Extent = new Extent(-180,-90,180,90);
+                tileSchema.Extent = new Extent(112.8, 34, 124.5, 38.9);
                 // Fill in the remaining properties
                 tileSchema.Name = tileMatrixSet.Identifier.Value;
                 tileSchema.YAxis = YAxis.OSM;
